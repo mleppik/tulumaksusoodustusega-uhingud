@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tulumaksusoodustusega ühingud</title>
+  <meta name="description" content="Otsitav nimekiri Eesti mittetulundusühingutest, sihtasutustest ja usulistest ühendustest, kellele tehtud annetused on tulumaksusoodustusega. Andmed: Maksu- ja Tolliamet.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A4%9D%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div>
+      <h1 data-i18n="site.title">Tulumaksusoodustusega ühingud</h1>
+      <p class="tagline" data-i18n="site.tagline"></p>
+    </div>
+    <nav class="lang-switch" aria-label="Language">
+      <button type="button" data-lang="et" class="active" lang="et">ET</button>
+      <button type="button" data-lang="en" lang="en">EN</button>
+    </nav>
+  </div>
+</header>
+
+<div class="notice">
+  <div class="container">
+    <span id="unofficial-notice" data-i18n-tpl="notice.unofficial"></span>
+    <a id="source-pdf-link" href="https://ncfailid.emta.ee/s/69dm4GRbczHFbWQ" target="_blank" rel="noopener" data-i18n="notice.sourceLink"></a>
+  </div>
+</div>
+
+<main class="container">
+
+  <section class="card" id="search-card">
+    <div class="controls">
+      <input type="search" id="search" autocomplete="off" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.label">
+      <select id="county-filter" data-i18n-aria="filter.county.label"></select>
+      <select id="type-filter" data-i18n-aria="filter.type.label">
+        <option value="" data-i18n="filter.type.all"></option>
+        <option value="mtu" data-i18n="filter.type.mtu"></option>
+        <option value="sa" data-i18n="filter.type.sa"></option>
+      </select>
+    </div>
+    <p class="results-meta">
+      <span id="results-count"></span>
+      <button type="button" id="show-all" class="link-btn hidden" data-i18n="results.showAll"></button>
+    </p>
+    <div class="table-wrap">
+      <table id="org-table">
+        <thead>
+          <tr>
+            <th data-i18n="th.name"></th>
+            <th data-i18n="th.code"></th>
+            <th data-i18n="th.county"></th>
+            <th data-i18n="th.place"></th>
+            <th data-i18n="th.since"></th>
+          </tr>
+        </thead>
+        <tbody id="org-tbody"></tbody>
+      </table>
+      <p id="no-results" class="hidden" data-i18n="results.none"></p>
+    </div>
+  </section>
+
+  <section class="card" id="calculator">
+    <h2 data-i18n="calc.title"></h2>
+    <p data-i18n="calc.lead"></p>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <label>
+          <span data-i18n="calc.donation"></span>
+          <input type="number" id="calc-donation" min="0" step="100" value="1000" inputmode="decimal">
+        </label>
+        <label>
+          <span data-i18n="calc.payroll"></span>
+          <input type="number" id="calc-payroll" min="0" step="1000" inputmode="decimal">
+          <small data-i18n="calc.payrollHint"></small>
+        </label>
+        <label>
+          <span data-i18n="calc.profit"></span>
+          <input type="number" id="calc-profit" min="0" step="1000" inputmode="decimal">
+        </label>
+      </div>
+      <div class="calc-results">
+        <dl>
+          <div class="calc-row">
+            <dt><span data-i18n="calc.limit"></span> <small id="calc-limit-basis"></small></dt>
+            <dd id="calc-limit">–</dd>
+          </div>
+          <div class="calc-row">
+            <dt data-i18n="calc.excess"></dt>
+            <dd id="calc-excess">–</dd>
+          </div>
+          <div class="calc-row">
+            <dt data-i18n="calc.tax"></dt>
+            <dd id="calc-tax">–</dd>
+          </div>
+          <div class="calc-row total">
+            <dt data-i18n="calc.total"></dt>
+            <dd id="calc-total">–</dd>
+          </div>
+        </dl>
+        <p class="muted" id="calc-unlisted"></p>
+      </div>
+    </div>
+    <p class="disclaimer">
+      <span data-i18n="calc.disclaimer"></span>
+      <a id="emta-link" href="#" target="_blank" rel="noopener" data-i18n="calc.emtaLink"></a>
+    </p>
+  </section>
+
+  <section class="card" id="info">
+    <h2 data-i18n="info.title"></h2>
+    <p data-i18n="info.p1"></p>
+    <p data-i18n="info.p2"></p>
+    <ul class="link-list">
+      <li><a id="info-emta" href="#" target="_blank" rel="noopener" data-i18n="info.link.emta"></a></li>
+      <li><a href="https://www.emta.ee/ariklient/registreerimine-ettevotlus/tulumaksusoodustusega-uhingule/nimekirjas-olevad-uhingud" target="_blank" rel="noopener" data-i18n="info.link.emtaList"></a></li>
+      <li><a href="https://andmed.eesti.ee/datasets/tulumaksusoodustusega-uhingute-nimekiri" target="_blank" rel="noopener" data-i18n="info.link.dataset"></a></li>
+      <li><a href="https://ncfailid.emta.ee/s/69dm4GRbczHFbWQ" target="_blank" rel="noopener" data-i18n="info.link.sourcePdf"></a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <a href="https://github.com/martinleppik/tulumaksusoodustusega-uhingud" target="_blank" rel="noopener" data-i18n="footer.openSource"></a>
+    <span data-i18n="footer.data"></span>
+    <span data-i18n="footer.code"></span>
+    <span id="footer-updated" data-i18n-tpl="footer.updated"></span>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

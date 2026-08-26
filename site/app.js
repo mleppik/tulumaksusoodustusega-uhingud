@@ -4,7 +4,7 @@
   var TAX_RATE = 22 / 78; // income tax on the amount exceeding the tax-free limit
   var PAYROLL_LIMIT_SHARE = 0.03; // 3% of payroll subject to social tax
   var PROFIT_LIMIT_SHARE = 0.10; // 10% of previous financial year's profit
-  var ROW_CAP = 200;
+  var ROW_CAP = 10;
 
   var LINKS = {
     emtaDonations: {

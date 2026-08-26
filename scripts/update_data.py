@@ -46,7 +46,10 @@ SKIP_RES = [
     re.compile(r"^\s*Tulumaksusoodustusega mittetulundusühingute"),
     re.compile(r"^\s*Seisuga\s+\d{2}\.\d{2}\.\d{4}\s*$"),
     re.compile(r"^\s*Mittetulundusühingud, sihtasutused, usulised ühingud\b"),
-    re.compile(r"^\s*kandmine\s*$"),  # wrapped "Nimekirja kandmine" header
+    # The "Nimekirja kandmine" column header wraps; depending on the extractor
+    # (pdftotext vs ghostscript) its words can land on lines of their own.
+    re.compile(r"^\s*Nimekirja\s*$"),
+    re.compile(r"^\s*kandmine\s*$"),
 ]
 
 
